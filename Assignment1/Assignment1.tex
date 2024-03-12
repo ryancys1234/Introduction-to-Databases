@@ -1,0 +1,402 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage[normalem]{ulem}
+\usepackage{amstext,amsmath,amssymb}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{setspace,float,caption}
+\usepackage[left=.25in, right=.25in, top=1in, bottom=1in]{geometry}
+\newcommand{\var}[1]{\mathit{#1}}
+
+\begin{document}
+
+~~~\vspace{-2.0cm}
+
+\noindent
+University of Toronto\\
+CSC343, Winter 2024\\[10pt]
+{\LARGE\bf Assignment 1}
+
+%% ================================
+\section*{Part 1: Create an instance}
+
+\begin{table}[H]
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{CityInstance}
+    \begin{tabular}{|c|c|c|} 
+    \hline
+    cityID & name & country \\ [.5ex] 
+    \hline\hline
+    1 & Toronto & Canada \\
+    \hline
+    2 & Montreal & Canada \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{TripInstance}
+    \begin{tabular}{|c|c|c|} 
+    \hline
+    tripID & startCity & length \\ [.5ex] 
+    \hline\hline
+    1 & 1 & 4 \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{TransportActivityInstance}
+    \begin{tabular}{|c|c|c|} 
+    \hline
+    aID & destCity & mode \\ [.5ex] 
+    \hline\hline
+    4 & 2 & train \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{TourActivityInstance}
+    \begin{tabular}{|c|c|c|c|} 
+    \hline
+    aID & name & duration & extra \\ [.5ex] 
+    \hline\hline
+    1 & ROM & 5 & False \\
+    \hline
+    2 & CN Tower & 6 & False \\
+    \hline
+    3 & Toronto Zoo & 11 & False \\
+    \hline
+    5 & Old Montreal & 5 & False \\
+    \hline
+    6 & Mont Royal & 6 & True \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{ItineraryInstance}
+    \begin{tabular}{|c|c|c|c|c|} 
+    \hline
+    tripID & day & step & cityID & activityID \\ [.5ex] 
+    \hline\hline
+    1 & 1 & 1 & 1 & 1 \\
+    \hline
+    1 & 1 & 2 & 1 & 2 \\
+    \hline
+    1 & 2 & 1 & 1 & 3 \\
+    \hline
+    1 & 3 & 1 & 1 & 4 \\
+    \hline
+    1 & 4 & 1 & 2 & 5 \\
+    \hline
+    1 & 4 & 2 & 2 & 6 \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{StaffInstance}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    staffID & name & hireDate \\ [.5 ex]
+    \hline\hline
+    1 & Me & 20240101 \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{TravellerInstance}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    tID & name & email & citizenship \\ [.5 ex]
+    \hline\hline
+    1 & John Doe & a@mail.com & Canada \\
+    \hline
+    2 & Jane Doe & b@mail.com & Canada \\
+    \hline
+    3 & Lorem Is & c@mail.com & Canada \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\parbox{.35\linewidth}{
+    \centering
+    \caption*{BookingInstance}
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    bID & tripID & startDate & traveller & bookedBy & price \\ [.5 ex]
+    \hline\hline
+    1 & 1 & 20240131 & 1 & 1 & 500 \\
+    \hline
+    2 & 1 & 20240131 & 2 & 1 & 500 \\
+    \hline
+    3 & 1 & 20240131 & 3 & 1 & 500 \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{ExtraBookingInstance}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    bID & activity & price \\ [.5 ex]
+    \hline\hline
+    3 & 6 & 200 \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+%% ================================
+\section*{Part 2: Give the output of a query}
+
+\begin{table}[H]
+    \centering
+    \caption*{QueryOutput}
+    \begin{tabular}{|c|}
+    \hline
+    duration \\ [.5 ex]
+    \hline\hline
+    5 \\
+    \hline
+    6 \\
+    \hline
+    11 \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+
+%% ================================
+\section*{Part 3: Violating a constraint}
+
+\begin{table}[H]
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{CityInstance}
+    \begin{tabular}{|c|c|c|} 
+    \hline
+    cityID & name & country \\ [.5ex] 
+    \hline\hline
+    1 & Toronto & Canada \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{TripInstance}
+    \begin{tabular}{|c|c|c|} 
+    \hline
+    tripID & startCity & length \\ [.5ex] 
+    \hline\hline
+    1 & 1 & 1 \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.3\linewidth}{
+    \centering
+    \caption*{StaffRequiredInstance}
+    \begin{tabular}{|c|c|} 
+    \hline
+    activityID & role \\ [.5ex] 
+    \hline\hline
+    1 & Guide \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{TourActivityInstance}
+    \begin{tabular}{|c|c|c|c|} 
+    \hline
+    aID & name & duration & extra \\ [.5ex] 
+    \hline\hline
+    1 & CN Tower & 6 & False \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{ItineraryInstance}
+    \begin{tabular}{|c|c|c|c|c|} 
+    \hline
+    tripID & day & step & cityID & activityID \\ [.5ex] 
+    \hline\hline
+    1 & 1 & 1 & 1 & 1 \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{StaffInstance}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    staffID & name & hireDate \\ [.5 ex]
+    \hline\hline
+    1 & Me & 20240101 \\
+    \hline
+    \end{tabular}
+}
+\hfill
+\parbox{.45\linewidth}{
+    \centering
+    \caption*{TravellerInstance}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    tID & name & email & citizenship \\ [.5 ex]
+    \hline\hline
+    1 & John Doe & a@mail.com & Canada \\
+    \hline
+    \end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption*{BookingInstance}
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    bID & tripID & startDate & traveller & bookedBy & price \\ [.5 ex]
+    \hline\hline
+    1 & 1 & 20240131 & 1 & 1 & 500 \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+
+%% ================================
+\section*{Part 4: Queries}
+
+\begin{enumerate}
+{\large
+    \item -- Every country and tripID tuple where the trip visited the country. \\[5pt]
+    $Countries(country, tripID) := \Pi_{country, tripID} (City \bowtie Itinerary)$ \\[10pt]
+    -- Every tripID that has visited at least three countries. \\[5pt]
+    $AtLeastThrice(tripID) := \\[5pt]
+    \hspace*{1cm} \Pi_{T1.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID = T3.tripID \\ \wedge \\ T1.country < T2.country < T3.country}} \Big( \rho_{T1} Countries \times \rho_{T2} Countries \times \rho_{T3} Countries \Big) \bigg]$ \\[10pt]
+    -- Every tripID that has visited at least four countries. \\[5pt]
+    $AtLeastFour(tripID) := \\[5pt]
+    \hspace*{1cm} \Pi_{T1.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ = T3.tripID = T4.tripID \\ \wedge \\ T1.country < T2.country \\ < T3.country < T4.country}} \Big( \rho_{T1} Countries \times \rho_{T2} Countries \times \rho_{T3} Countries \times \rho_{T4} Countries \Big) \bigg]$ \\[10pt]
+    -- Every tripID that has visited exactly three countries. \\[5pt]
+    $ExactlyThree(tripID) := AtLeastThrice - AtLeastFour$ \\[10pt]
+    -- The tripID and day of every day in any trip. \\[5pt]
+    $TripDays(tripID, day) := \Pi_{\text{tripID, day}} Itinerary$ \\[10pt]
+    -- The tripID and day of every day that is not the last day in a trip. \\[5pt]
+    $NotLastDays(tripID, day) := \Pi_{\substack{\text{T1.tripID,} \\ \text{T1.day}}} (\sigma_{\substack{\text{T1.tripID = T2.tripID} \\ \wedge \\ \text{T1.day} < \text{T2.day}}} (\rho_{\text{T1}}\text{TripDays} \times \rho_{\text{T2}}\text{TripDays}))$ \\[10pt]
+    -- The tripID and day of every day that is the last day in a trip. \\[5pt]
+    $LastDay(tripID, day) := TripDays - NotLastDays$ \\[10pt]
+    -- The tripID and step of every step on the last day of any trip. \\[5pt]
+    $LastDaySteps(tripID, day, step) := \Pi_{tripID, day, step} (LastDay \bowtie Itinerary)$ \\[10pt]
+    -- The tripID and step of every step that is not the last step on the last day in a trip. \\[5pt]
+    $NotLastStep(tripID, day, step) := \Pi_{\substack{\text{T1.tripID,} \\ \text{T1.day,} \\ \text{T1.step}}} (\sigma_{\substack{\text{T1.tripID = T2.tripID} \\ \wedge \\ \text{T1.step} < \text{T2.step}}} (\rho_{\text{T1}}\text{LastDaySteps} \times \rho_{\text{T2}}\text{LastDaySteps}))$ \\[10pt]
+    -- The tripID and step of every last step on the last day in a trip. \\[5pt]
+    $LastStep(tripID, day, step) := LastDaySteps - NotLastStep$ \\[10pt]
+    -- The tripID, cityID, and country of every trip's start city. \\[5pt]
+    $Renamed(tripID, cityID, country) := \Pi_{tripID, cityID, country} (\rho_{T1(tripID, cityID, length)} Trip) \bowtie City$ \\[10pt]
+    -- The tripID, cityID, and country of the start city in a trip that visits exactly three countries. \\[5pt]
+    $Start(tripID, startCityID, startCountry) := \Pi_{tripID, cityID, country} (Itinerary \bowtie ExactlyThree \bowtie Renamed)$ \\[10pt]
+    -- The tripID, cityID, and country of the end city in a trip that visits exactly three countries. \\[5pt]
+    $End(tripID, endCityID, endCountry) := \Pi_{tripID, cityID, country} (Itinerary \bowtie ExactlyThree \bowtie LastStep \bowtie City)$ \\[10pt]
+    $Start \bowtie End$
+    \item -- The cityID of every city which is not part of any trip. \\[5pt]
+    $NoTrip(cityID) := \Pi_{cityID} City - \Pi_{cityID} Itinerary$\\
+    $\Pi_{name,country} (NoTrip \bowtie City)$
+    \item Cannot be expressed.
+    \item Cannot be expressed.
+    \item -- The bID, activity, and price of every extra booking that is not the most expensive. \\[5pt]
+    $NotMax(bID, activity, price) := \\[5pt]
+    \hspace*{1cm} \Pi_{T1.bID, T1.activity, T1.price} \bigg[ \sigma_{\substack{T1.bID \neq T2.bID \\ \wedge \\ T1.price < T2.price}} \Big( \rho_{T1} ExtraBooking \times \rho_{T2} ExtraBooking \Big) \bigg]$ \\[10pt]
+    -- The bID, activity, and price of every extra booking with the maximum price. \\[5pt]
+    $Max(bID, activity, price) := ExtraBooking - NotMax$ \\[10pt]
+    -- The bID, activity, and price of every extra booking that is that is not the second most expensive. \\[5pt]
+    $NotSecond(bID, activity, price) := \\[5pt]
+    \hspace*{1cm} \Pi_{T1.bID, T1.activity, T1.price} \bigg[ \sigma_{\substack{T1.bID \neq T2.bID \\ \wedge \\ T1.price < T2.price}} \Big( \rho_{T1} NotMax \times \rho_{T2} NotMax \Big) \bigg]$ \\[10pt]
+    -- The bID, activity, and price of every extra booking with the second greatest price. \\[5pt]
+    $Second(bID, activity, price) := ExtraBooking - Max - NotSecond$ \\[10pt]
+    $\Pi_{tripID, activity, price} \bigg[ \Big(Max \cup Second \Big) \bowtie Booking \bigg]$
+    \item -- The staffID of every staff hired before 2020. \\[5pt]
+    $Before2020(\var{staffID}) := \Pi_{\var{staffID}} (\sigma_{hireDate < 20200101} \var{Staff})$ \\[10pt]
+    -- The staffID and tripID of every 'guide' assignment to a trip where the staff was hired before 2020. \\[5pt]
+    $Guide(\var{staffID}, tripID) := \Pi_{\var{staffID}, tripID} \Big( \sigma_{role='guide'} \var{StaffAssignment} \bowtie \var{Before2020} \Big)$ \\[10pt]
+    -- Every possible combination of staffID and tripID where the staff was hired before 2020. \\[5pt]
+    $EveryPossible(\var{staffID}, tripID) := \Pi_{\var{staffID}} \var{Before2020} \times \Pi_{tripID} Trip$ \\[10pt]
+    -- The staffID of the staff who were not assigned as 'guide' to every trip. \\[5pt]
+    $Missing(\var{staffID}) := \Pi_{\var{staffID}} (EveryPossible - Guide)$ \\[10pt]
+    $Before2020 - Missing$
+    \item Note: I solved this before the clarification that returning to a city previously visited at an earlier date counts as visiting a new city. \\[5pt]
+    $\Pi_{tripID} Itinerary - \Pi_{T1.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.city = T2.city \\ \wedge \\ T1.day < T2.day}} \Bigg( \rho_{T1} Itinerary \times \rho_{T2} Itinerary \Bigg) \bigg]$
+    \item -- All bIDs and tripIDs where the booking does not have the earliest start date for the trip. \\[5pt]
+    $NotEarliestBooking(bID, tripID) := \Pi_{T2.bID, T2.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.startDate < T2.startDate}} \Big( \rho_{T1} Booking \times \rho_{T2} Booking \Big) \bigg]$ \\[10pt]
+    -- All bIDs and tripIDs where the booking has the earliest start date for the trip. \\[5pt]
+    $EarliestBookings(bID, tripID) := \Pi_{bID, tripID} Booking - NotEarliestBooking$ \\[10pt]
+    -- The bIDs of all earliest bookings where their trips are booked by at least two other travellers at later start dates. \\[5pt]
+    $AtLeastThreePeople(bID) := \Pi_{bID} EarliestBookings \cap \\[5pt]
+    \hspace*{1cm} \Pi_{T1.bID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID = T3.tripID \\ \wedge \\ T1.startDate < T2.startDate \\ \wedge \\ T1.startDate < T3.startDate \\ \wedge \\ T1.traveller < T2.traveller < T3.traveller}} \Big( \rho_{T1} Booking \times \rho_{T2} Booking \times \rho_{T3} Booking \Big) \bigg]$ \\[10pt]
+    -- All travellers who are not influencers. \\[5pt]
+    $NotInfluencers(traveller) := \Pi_{traveller} (\Pi_{traveller, bID} Booking - (\Pi_{traveller} Booking \times AtLeastThreePeople))$ \\[10pt]
+    $\Pi_{name, email} ((\Pi_{traveller} Booking - NotInfluencers) \bowtie Traveller)$
+    \item Cannot be expressed.
+    \item $\Pi_{\var{T1.staffID}, \var{T2.staffID}} \Big[ \sigma_{\substack{T1.staffID < T2.staffID \\ \wedge \\ T1.tripID = T2.tripID \\ \wedge \\ T1.startDate = T2.startDate}} (\rho_{T1} StaffAssignment \times \rho_{T2} StaffAssignment) \Big]$
+}\end{enumerate}
+
+\newpage
+
+%% ================================
+\section*{Part 5: Additional integrity constraints}
+
+\begin{enumerate}
+{\large
+    \item -- The tripID and day of every first day of a trip listed in Itinerary. \\[5pt]
+    $FirstDay(tripID, day) := \Pi_{tripID, day} Itinerary - \\[5pt]
+    \hspace*{1cm} \Pi_{T2.tripID, T2.day} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.day < T2.day}} \Bigg( \rho_{T1} Itinerary \times \rho_{T2} Itinerary \Bigg) \bigg]$ \\[10pt]
+    $\Pi_{tripID} (\sigma_{day>1} FirstDay) \cup \Pi_{tripID} \Bigg( \Pi_{tripID, day} Itinerary - \Pi_{tripID, day} (\sigma_{day = 1} Itinerary) - \\[5pt]
+    \hspace*{1cm} \Pi_{T2.tripID, T2.day}  \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.day + 1 = T2.day}} \Bigg( \rho_{T1} Itinerary \times \rho_{T2} Itinerary \Bigg) \bigg] \Bigg) = \emptyset$
+    \item $\rho_{T1(activityID)} (\Pi_{activity} ExtraBooking) - \Pi_{activityID} Itinerary = \emptyset$
+    \item $\Pi_{traveller, country} [Booking \bowtie Itinerary \bowtie City] - \\[5pt]
+    \hspace*{1cm} \rho_{T2(traveller, country)} (\Pi_{tID, citizenship} Traveller) - \Pi_{traveller, country} (\sigma_{expiry > startDate} (Visa \bowtie Booking)) = \emptyset$
+    \item $\Pi_{T1.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID = T3.tripID \\ \wedge \\ T1.day = T2.day = T3.day \\ \wedge \\ T1.country < T2.country < T3.country}} \\[5pt]
+    \hspace*{1cm} \Bigg( \rho_{T1} (City \bowtie Itinerary) \times \rho_{T2} (City \bowtie Itinerary) \times \rho_{T3} (City \bowtie Itinerary) \Bigg) \bigg] = \emptyset$
+    \item -- The tripID, day, and step of every transport activity in the itinerary. \\[5pt]
+    $TransportItinerary(tripID, day, step) := \\[5pt]
+    \hspace*{1cm} \Pi_{tripID, day, step, activityID} (Itinerary \bowtie (\rho_{R1(activityID)} \Pi_{aID} TransportActivity))$ \\[10pt]
+    -- The tripID, day, and step of every transport activity that is the last step of a day in a trip. \\[5pt]
+    $LastStepTransport(tripID, day, step) := TransportItinerary - \\[5pt]
+    \hspace*{1cm} \Pi_{T1.tripID, T1.day, T1.step} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.day = T2.day \\ \wedge \\ T1.step < T2.step}} \Bigg( \rho_{T1} Itinerary \times \rho_{T2} Itinerary \Bigg) \bigg]$ \\[10pt]
+    $\Pi_{T1.tripID} \bigg[ \sigma_{\substack{T1.tripID = T2.tripID \\ \wedge \\ T1.day = T2.day \\ \wedge \\ T1.step + 1 = T2.step}} \Big( \rho_{T1} TransportItinerary \times \rho_{T2} TransportItinerary \Big) \bigg] \cup \\[5pt]
+    \hspace*{1cm} \Pi_{T3.tripID} \bigg[ \sigma_{\substack{T3.tripID = T4.tripID \\ \wedge \\ T3.day + 1 = T4.day}} \Bigg( \rho_{T3} (\Pi_{tripID, day} LastStepTransport) \times \rho_{T4} (\sigma_{step = 1} TransportItinerary))\Bigg) \bigg] \\[5pt]
+    \hspace*{1cm} = \emptyset$
+    \item Cannot be expressed.
+}\end{enumerate}
+
+\end{document}
