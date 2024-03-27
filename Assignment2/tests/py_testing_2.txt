@@ -1,0 +1,28 @@
+insert into Patron values
+('1','','','a','',''),
+('2','','','b','',''),
+('3','','','c','','');
+
+insert into Ward values
+(1,'');
+
+insert into LibraryBranch values
+('L1','','','',True,1);
+
+insert into LibraryRoom values
+(1,'L1','','auditorium',100);
+
+insert into LibraryEvent values
+(1,1,''),
+(2,1,'');
+
+insert into EventSchedule values
+(1,'2022-01-01','13:00:00','15:00:00'),
+(2,'2022-01-01','13:00:00','16:00:00'),
+(2,'2022-01-02','00:00:00','00:00:01'),
+(2,'2022-01-03','00:00:00','00:00:01'),
+(2,'2022-01-04','00:00:00','00:00:01');
+
+insert into EventSignUp values
+('2',1),
+('3',2);

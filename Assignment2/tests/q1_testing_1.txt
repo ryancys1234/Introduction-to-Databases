@@ -1,0 +1,58 @@
+insert into Patron values
+('111','','','a','',''),
+('112','','','1','',''),
+('113','','','2','',''),
+('114','','','3','',''),
+('115','','','4','','');
+
+insert into Ward values
+(1,'');
+
+insert into Holding values
+(1,'','books','',2000),
+(2,'','books','',2000);
+
+insert into LibraryBranch values
+(1,'','','', True, 1);
+
+insert into LibraryRoom values
+(1,1,'','auditorium',100),
+(2,1,'','auditorium',100);
+
+insert into LibraryEvent values
+(1,1,''),
+(2,2,'');
+
+insert into EventSchedule values
+(1,'2019-01-01','15:00:00','16:00:00'),
+(1,'2022-01-01','15:00:00','16:00:00'),
+(2,'2022-01-01','15:00:00','16:00:00'),
+(2,'2022-06-01','16:00:00','17:00:00'),
+(2,'2023-01-01','15:00:00','16:00:00');
+
+insert into EventSignUp values
+('111',1),
+('112',1),
+('113',1),
+('111',2),
+('112',2),
+('113',2),
+('114',2),
+('115',2);
+
+insert into LibraryCatalogue values
+(1,1,''),
+(1,2,'');
+
+insert into LibraryHolding values
+('12345',1,1),
+('12346',1,1);
+
+insert into Checkout values
+(1,'111','12345','2022-01-01 00:00:00'),
+(2,'111','12346','2022-01-02 00:00:00'),
+(3,'112','12345','2022-01-29 00:11:11');
+
+insert into Return values
+(1,'2022-01-11 10:00:00'),
+(2,'2022-01-22 09:01:23');

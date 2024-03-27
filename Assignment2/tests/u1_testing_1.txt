@@ -1,0 +1,29 @@
+insert into Ward values
+(1,'');
+
+insert into LibraryBranch values
+(1,'','','',True,1);
+
+insert into LibraryHours values
+(1,'fri','10:00:00','14:00:00'),
+(1,'mon','10:00:00','14:00:00'),
+(1,'sat','10:00:00','14:00:00'),
+(1,'sun','10:00:00','14:00:00'),
+(1,'thu','10:00:00','14:00:00'),
+(1,'tue','10:00:00','14:00:00'),
+(1,'wed','10:00:00','14:00:00');
+
+insert into LibraryRoom values
+(1,1,'','meeting',50);
+
+insert into LibraryEvent values
+(1,1,'');
+
+insert into EventSchedule values
+(1,'2020-03-21','15:00:00','17:00:00');
+
+insert into Patron values
+('111','','','a','','');
+
+insert into EventSignUp values
+('111',1);

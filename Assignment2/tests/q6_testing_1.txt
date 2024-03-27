@@ -1,0 +1,40 @@
+insert into Patron values
+('123','','','a','',''),
+('124','','','b','','');
+
+insert into Contributor values
+(1,'C1','C1'),
+(2,'C2','C2');
+
+insert into Holding values
+(1,'','books','',2000),
+(2,'','books','',2000);
+
+insert into HoldingContributor values
+(1,1),
+(2,1);
+
+insert into Ward values
+(1,'');
+
+insert into LibraryBranch values
+('L1','','','',True,1);
+
+insert into LibraryCatalogue values
+('L1',1,'100'),
+('L1',2,'101');
+
+insert into LibraryHolding values
+('100','L1',1),
+('101','L1',2);
+
+insert into Checkout values
+(1,'123','100','2022-01-01 10:00:00'),
+(2,'124','100','2022-01-01 16:00:00'),
+(3,'124','101','2022-01-01 10:00:00');
+
+insert into Review values
+('123',1,4,''),
+('123',2,5,''),
+('124',1,5,''),
+('124',2,3,'');

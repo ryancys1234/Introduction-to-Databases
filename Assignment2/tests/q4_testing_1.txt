@@ -1,0 +1,41 @@
+insert into Ward values
+(1,'W1'),
+(2,'W2'),
+(3,'W3');
+
+insert into Patron values
+('123','','','a','',''),
+('124','','','b','',''),
+('125','','','c','','');
+
+insert into LibraryBranch values
+('L1','','','',True,1),
+('L2','','','',False,2),
+('L3','','','',False,3);
+
+insert into LibraryRoom values
+(1,'L1','','auditorium',100),
+(2,'L2','','auditorium',100),
+(3,'L3','','auditorium',100);
+
+insert into LibraryEvent values
+(1,1,''),
+(2,2,''),
+(3,3,''),
+(4,3,'');
+
+insert into EventSchedule values
+(1,'2022-01-01','00:00:00','01:00:00'),
+(2,'2022-06-01','00:00:00','01:00:00'),
+(3,'2022-09-30','00:00:00','01:00:00'),
+(4,'2023-01-02','00:00:00','01:00:00');
+
+insert into EventSignUp values
+('123',1),
+('123',2),
+('123',3),
+('124',1),
+('124',3),
+('125',1),
+('125',2),
+('125',4);

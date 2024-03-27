@@ -1,0 +1,30 @@
+insert into Ward values
+(1,'');
+
+insert into LibraryBranch values
+('L1','','','',True,1),
+('L2','','','',True,1);
+
+insert into Holding values
+(1,'Title 1','books','',2020),
+(2,'Title 1','books','',2021),
+(3,'Title 2','books','',2022);
+
+insert into Contributor values
+(1,'First','Last');
+
+insert into HoldingContributor values
+(1,1)
+(2,1)
+(3,1);
+
+insert into LibraryCatalogue values
+('L1',1,''),
+('L1',2,''),
+('L2',3,'');
+
+insert into LibraryHolding values
+('100','L1',1),
+('101','L1',2),
+('102','L1',2),
+('103','L2',3);

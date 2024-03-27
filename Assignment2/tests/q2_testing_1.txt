@@ -1,0 +1,32 @@
+insert into Ward values
+(1,'Parkdale-High Park');
+
+insert into LibraryBranch values
+('L1','','','',True,1),
+('L2','','','',True,1);
+
+insert into Holding values
+(1,'Book','books','',2019),
+(2,'Mag','magazines and newspapers','',2010),
+(3,'Audio','audiobooks','',2015);
+
+insert into LibraryCatalogue values
+('L1',1,100),
+('L1',2,101),
+('L1',3,102);
+
+insert into LibraryHolding values
+('1001','L1',1),
+('2001','L1',2),
+('3001','L1',3);
+
+insert into Patron values
+('12345','','','a','','');
+
+insert into Checkout values
+(1,'12345','1001',now()-interval '21 days'),
+(2,'12345','2001',now()-interval '21 days'),
+(3,'12345','3001',now()-interval '21 days');
+
+insert into Return values
+(3,now());
