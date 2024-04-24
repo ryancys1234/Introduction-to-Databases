@@ -1,0 +1,213 @@
+INSERT INTO Person VALUES
+(1, 'Michelle', 'Craig', 'm@mail.com', 'University of Toronto'),
+(2, 'Jennifer', 'Campbell', 'je@mail.com', 'University of Toronto'),
+(3, 'Sadia', 'Sharmin', 's@mail.com', 'University of Toronto'),
+(4, 'Jonathan', 'Calver', 'jo@mail.com', 'University of Toronto'),
+(5, 'Larry Yueli', 'Zhang', 'l@mail.com', 'University of Toronto'),
+(6, 'Diane', 'Horton', 'di@mail.com', 'University of Toronto'),
+(7, 'Daniel', 'Zingaro', 'dani@mail.com', 'University of Toronto'),
+(8, 'Danny', 'Heap', 'dann@mail.com', 'University of Toronto');
+
+INSERT INTO Research VALUES
+(1, 'Student Perspectives on Optional Groups', 'paper'),
+(2, 'Experience Report on the Use of Breakout Rooms in a Large Online Course',
+'paper'),
+(3, 'Introducing and Evaluating Exam Wrappers in CS2', 'paper'),
+(4, 'Michelle Craig paper 1', 'paper'),
+(5, 'Michelle Craig paper 2', 'paper'),
+(6, 'Michelle Craig paper 3', 'paper'),
+(7, 'Michelle Craig paper 4', 'paper'),
+(8, 'Michelle Craig paper 5', 'paper'),
+(9, 'Michelle Craig paper 6', 'paper'),
+(10, 'Michelle Craig paper 7', 'paper'),
+(11, 'Michelle Craig paper 8', 'paper'),
+(12, 'Michelle Craig paper 9', 'paper'),
+(13, 'Michelle Craig paper 10', 'paper'),
+(14, 'Jennifer Campbell paper 1', 'paper'),
+(15, 'Jennifer Campbell paper 2', 'paper'),
+(16, 'Jennifer Campbell paper 3', 'paper'),
+(17, 'Jennifer Campbell paper 4', 'paper'),
+(18, 'Jennifer Campbell paper 5', 'paper'),
+(19, 'Sadia Sharmin paper 1', 'paper'),
+(20, 'Sadia Sharmin poster 1', 'poster'),
+(21, 'Sadia Sharmin poster 2', 'poster'),
+(22, 'Sadia Sharmin poster 3', 'poster'),
+(23, 'Extra paper', 'paper');
+
+INSERT INTO ResearchAuthor VALUES
+(1,4,1),
+(1,2,2),
+(1,1,3),
+(2,3,1),
+(2,5,2),
+(3,1,1),
+(3,6,2),
+(3,7,3),
+(3,8,4),
+(4,1,1),
+(5,1,1),
+(6,1,1),
+(7,1,1),
+(8,1,1),
+(9,1,1),
+(10,1,1),
+(11,1,1),
+(12,1,1),
+(13,1,1),
+(14,2,1),
+(15,2,1),
+(16,2,1),
+(17,2,1),
+(18,2,1),
+(19,3,1),
+(20,3,1),
+(21,3,1),
+(22,3,1),
+(23,8,1);
+
+INSERT INTO Conference VALUES
+(1, 'SIGCSE TS', 2010, 'Toronto'),
+(2, 'SIGCSE TS', 2011, 'Toronto'),
+(3, 'SIGCSE TS', 2012, 'Toronto'),
+(4, 'SIGCSE TS', 2013, 'Toronto'),
+(5, 'SIGCSE TS', 2014, 'Toronto'),
+(6, 'SIGCSE TS', 2015, 'Toronto'),
+(7, 'SIGCSE TS', 2016, 'Toronto'),
+(8, 'SIGCSE TS', 2017, 'Toronto'),
+(9, 'SIGCSE TS', 2018, 'Toronto'),
+(10, 'SIGCSE TS', 2019, 'Toronto'),
+(11, 'SIGCSE TS', 2020, 'Toronto'),
+(12, 'SIGCSE TS', 2021, 'Toronto'),
+(13, 'SIGCSE TS', 2022, 'Toronto'),
+(14, 'SIGCSE TS', 2023, 'Toronto'),
+(15, 'ACM Global Computing Education Conference', 2019, 'Toronto'),
+(16, 'ACM Global Computing Education Conference', 2021, 'Toronto'),
+(17, 'ACM Global Computing Education Conference', 2023, 'Toronto'),
+(18, 'Extra Conference 1', 2013, 'Toronto'),
+(19, 'Extra Conference 2', 2014, 'Toronto'),
+(20, 'Extra Conference 3', 2015, 'Toronto');
+
+INSERT INTO ConferenceCommittee VALUES
+(15, 1, TRUE),
+(14, 1, TRUE);
+
+INSERT INTO Submission VALUES
+(1,1,4,1,'accept'),
+(2,2,5,1,'accept'),
+(3,3,6,1,'accept'),
+(4,4,7,1,'accept'),
+(5,5,8,1,'accept'),
+(6,6,9,1,'accept'),
+(7,7,10,1,'accept'),
+(8,15,11,1,'accept'),
+(9,16,12,1,'accept'),
+(10,17,13,1,'accept'),
+(11,6,14,2,'accept'),
+(12,7,15,2,'accept'),
+(13,8,16,2,'accept'),
+(14,9,17,2,'accept'),
+(15,9,18,2,'accept'),
+(16,12,20,3,'accept'),
+(17,13,2,3,'accept'),
+(18,14,21,3,'accept'),
+(19,15,22,3,'accept'),
+(20,14,1,4,'accept'),
+(21,1,3,1,'reject'),
+(22,2,3,1,'reject'),
+(23,3,3,1,'reject'),
+(24,4,3,1,'reject'),
+(25,5,3,1,'reject'),
+(26,18,3,1,'reject'),
+(27,19,3,1,'reject'),
+(28,20,3,1,'reject'),
+(29,6,3,1,'accept'),
+(30,1,19,3,'reject'),
+(31,2,19,3,'reject'),
+(32,3,19,3,'reject'),
+(33,4,19,3,'reject'),
+(34,5,19,3,'reject'),
+(35,6,19,3,'reject'),
+(36,7,19,3,'reject'),
+(37,8,19,3,'reject'),
+(38,9,19,3,'reject'),
+(39,10,19,3,'reject'),
+(40,11,19,3,'reject'),
+(41,12,19,3,'reject'),
+(42,13,19,3,'reject'),
+(43,14,19,3,'reject'),
+(44,1,23,8,'reject'),
+(45,2,23,8,'reject'),
+(46,3,23,8,'reject'),
+(47,4,23,8,'reject'),
+(48,5,23,8,'reject'),
+(49,6,23,8,'reject'),
+(50,7,23,8,'reject'),
+(51,8,23,8,'reject'),
+(52,9,23,8,'reject'),
+(53,10,23,8,'reject'),
+(54,11,23,8,'reject'),
+(55,12,23,8,'reject'),
+(56,13,23,8,'reject'),
+(57,14,23,8,'reject'),
+(58,15,23,8,'reject'),
+(59,16,23,8,'reject'),
+(60,17,23,8,'reject'),
+(61,15,19,3,'reject'),
+(62,16,19,3,'reject'),
+(63,17,19,3,'reject');
+
+INSERT INTO PosterSession VALUES
+(1,12,TIMESTAMP '2021-03-24 13:10:00'),
+(2,14,TIMESTAMP '2023-03-24 13:10:00'),
+(3,15,TIMESTAMP '2019-03-24 13:10:00');
+
+INSERT INTO PosterPresentation VALUES
+(20,1),
+(21,2),
+(22,3);
+
+INSERT INTO PaperSession VALUES
+(1,13,TIMESTAMP '2022-03-24 13:10:00',8);
+
+INSERT INTO PaperPresentation VALUES
+(2,1,'13:30:00');
+
+INSERT INTO Workshop VALUES
+(1,'Machine learning in education',9),
+(2,'Misc. topics',10);
+
+INSERT INTO WorkshopFacilitator VALUES
+(1,1),
+(2,1);
+
+INSERT INTO ConferenceRegistration VALUES
+(1,1,1,30,FALSE),
+(2,1,2,30,FALSE),
+(3,1,3,30,FALSE),
+(4,1,4,30,FALSE),
+(5,1,5,30,FALSE),
+(6,1,6,30,FALSE),
+(7,1,7,30,FALSE),
+(8,1,8,30,FALSE),
+(9,1,9,30,FALSE),
+(10,1,10,30,FALSE),
+(11,1,11,30,FALSE),
+(12,1,12,30,FALSE),
+(13,1,13,30,FALSE),
+(14,1,14,30,FALSE),
+(15,1,15,30,FALSE),
+(16,1,16,30,FALSE),
+(17,1,17,30,FALSE),
+(18,2,6,30,FALSE),
+(19,2,7,30,FALSE),
+(20,2,8,30,FALSE),
+(21,2,9,30,FALSE),
+(22,2,10,30,FALSE),
+(23,3,12,30,FALSE),
+(24,3,13,30,FALSE),
+(25,3,14,30,FALSE),
+(26,3,15,30,FALSE);
+
+INSERT INTO WorkshopRegistration VALUES
+(21,1,5),
+(22,2,5);

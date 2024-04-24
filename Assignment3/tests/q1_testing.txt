@@ -1,0 +1,30 @@
+insert into Person values
+(1,'','','a',''),
+(2,'','','b',''),
+(3,'','','c',''),
+(4,'','','d',''),
+(5,'','','e','');
+
+insert into Research values
+(1,'','paper'),
+(2,'','poster'),
+(3,'','paper'),
+(4,'','paper');
+
+insert into ResearchAuthor values
+(1,1,1),
+(2,2,1),
+(3,3,1),
+(4,4,1);
+
+insert into Conference values
+(1,'C1',2019,''),
+(2,'C1',2021,''),
+(3,'C2',2019,'');
+
+insert into Submission values
+(1,1,1,1,'accept'),
+(2,1,2,2,'reject'),
+(3,1,3,3,'accept'),
+(4,2,4,4,'accept'),
+(5,3,2,2,'reject');

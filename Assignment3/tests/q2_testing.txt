@@ -1,0 +1,13 @@
+insert into Person values
+(1,'','','a',''),
+(2,'','','b',''),
+(3,'','','c','');
+
+insert into Conference values
+(1,'C1',2021,''),
+(2,'C1',2022,'');
+
+insert into ConferenceRegistration values
+(1,1,1,20,TRUE),
+(2,2,1,30,FALSE),
+(3,2,2,30,FALSE);

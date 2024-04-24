@@ -1,0 +1,37 @@
+insert into Person values
+(1,'F1','L1','a',''),
+(2,'F2','L2','b',''),
+(3,'F3','L3','c',''),
+(4,'F4','L4','d',''),
+(5,'F5','L5','e',''),
+(6,'F6','L6','f','');
+
+insert into Research values
+(1,'','paper'),
+(2,'','poster'),
+(3,'','paper'),
+(4,'','paper'),
+(5,'','paper'),
+(6,'','paper');
+
+insert into ResearchAuthor values
+(1,1,1),
+(2,2,1),
+(3,3,1),
+(4,4,1),
+(5,5,1),
+(6,6,1);
+
+insert into Conference values
+(1,'C1',2021,''),
+(2,'C2',2021,''),
+(3,'C1',2022,''),
+(4,'C3',2022,'');
+
+insert into Submission values
+(1,1,1,1,'accept'),
+(2,3,2,2,'accept'),
+(3,3,3,3,'reject'),
+(4,2,4,4,'accept'),
+(5,2,5,5,'accept'),
+(6,4,6,6,'accept');
