@@ -1,0 +1,271 @@
+\documentclass{article}
+\usepackage{fullpage, amsmath, wasysym, enumitem}
+\usepackage[left=.25in, right=.45in, top=.5in, bottom=1in]{geometry}
+\usepackage[normalem]{ulem}
+
+\begin{document}
+
+{\LARGE\bf Assignment 3}
+
+\begin{enumerate}
+{\large
+
+\item
+\begin{enumerate}[itemsep=0.3cm]
+\item $S \to U$, $V \to QU$, and $S \to TVX$ violate BCNF, since:
+\begin{itemize}
+    \item $S \to U$ is non-trivial and $S^+ = SUTVXQ$, meaning $S$ is not a superkey and $S \to U$ violates BCNF.
+    \item $R \to SW$ is non-trivial and $R^+ = RSWUTVXQ$, meaning $R$ is a superkey and $R \to SW$ does not violate BCNF.
+    \item $V \to QU$ is non-trivial and $V^+ = VQU$, meaning $V$ is not a superkey and $V \to QU$ violates BCNF.
+    \item $S \to TVX$ is non-trivial and $S^+ = SUTVXQ$, meaning $S$ is not a superkey and $S \to TVX$ violates BCNF.
+\end{itemize}
+\item I use $V \to QU$, which violates BCNF, to split $R_1$ into the relations $T_1(Q,U,V)$ and $T_2(R,S,T,V,W,X)$. To see if $T_1$ satisfies BCNF, I project the FDs onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|}
+\hline
+Q & U & V & Closure & Projected FDs\\
+\hline\hline
+\checked &&& $Q^+ = Q$ & Nothing\\
+\hline
+& \checked && $U^+ = U$ & Nothing\\
+\hline
+&& \checked & $V^+ = VQU$ & $V \to QU$\\
+\hline
+\checked & \checked && $QU^+ = QU$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the subsets of $T_1$ (which are $QV$, $UV$, and $QUV$) since they are all supersets of $V$, which is a superkey, and they can only generate weaker FDs than what I already have. Since $T_1$ does not have a projected FD that violates BCNF, it satisfies BCNF. To see if $T_2$ satisfies BCNF, I project the FDs onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+R & S & T & V & W & X & Closure & Projected FDs\\
+\hline\hline
+\checked &&&&&& $R^+ = RSWUTVXQ$ & $R \to SWTVX$\\
+\hline
+& \checked &&&&& $S^+ = SUTVXQ$ & $S \to TVX$: violates BCNF; abort the projection\\
+\hline
+\end{tabular}\end{center}
+
+Since $T_2$ has a projected FD that violates BCNF, it does not satisfy BCNF and I must decompose it further. I use $S \to TVX$, the violating FD, to split $T_2$ into the relations $T_3(S,T,V,X)$ and $T_4(R,S,W)$. To see if $T_3$ satisfies BCNF, I project the FDs onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+S & T & V & X & Closure & Projected FDs\\
+\hline\hline
+\checked &&&& $S^+ = SUTVXQ$ & $S \to TVX$\\
+\hline
+& \checked &&& $T^+ = T$ & Nothing\\
+\hline
+&& \checked && $V^+ = VQU$ & Nothing\\
+\hline
+&&& \checked & $X^+ = X$ & Nothing\\
+\hline
+& \checked & \checked && $TV^+ = TVQU$ & Nothing\\
+\hline
+& \checked && \checked & $TX^+ = TX$ & Nothing\\
+\hline
+&& \checked & \checked & $VX^+ = VXQU$ & Nothing\\
+\hline
+& \checked & \checked & \checked & $TVX^+ = TVXQU$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the subsets of $T_3$ (which are $STV$, $STX$, $SVX$, and $STVX$) since they are all supersets of $S$, which is a superkey. Since $T_3$ does not have a projected FD that violates BCNF, it satisfies BCNF. To see if $T_4$ satisfies BCNF, I project the FDs onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|}
+\hline
+R & S & W & Closure & Projected FDs\\
+\hline\hline
+\checked &&& $R^+ = RSW$ & $R \to SW$\\
+\hline
+& \checked && $S^+ = SUTVXQ$ & Nothing\\
+\hline
+&& \checked & $W^+ = W$ & Nothing\\
+\hline
+& \checked & \checked & $SW^+ = SWUTVXQ$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the subsets of $T_4$ (which are $RS$, $RW$, and $RSW$) since they are all supersets of $R$, which is a superkey. Since $T_4$ does not have a projected FD that violates BCNF, it satisfies BCNF.
+
+In summary, the relations in the final decomposition and their corresponding projected FDs are: $T_1(Q,U,V)$ with FD $V \to QU$, $T_3(S,T,V,X)$ with FD $S \to TVX$, and $T_4(R,S,W)$ with FD $R \to SW$.
+\item My schema preserves dependencies. Note that $S \to U$ follows from $S \to TVX$ and $V \to QU$. Although $S \to U$ is not a projected FD in the final decomposition, $S \to TVX$ and $V \to QU$ are projected, meaning $S \to U$ must also hold for any instance of the final decomposition. Hence, all dependencies are preserved in the schema.
+
+\item Assume $<q,r,s,t,u,v,w,x>$ came from $T_1 \bowtie T_3 \bowtie T_4$. Then, a possible instance of $R_1$ is:\\
+
+\begin{minipage}[t]{1in}\begin{tabular}{llllllll}
+Q & R & S & T & U & V & W & X\\
+\hline
+q & 1 & 2 & 3 & u & v & 4 & 5\\
+6 & 7 & s & t & 8 & v & 9 & x\\
+10 & r & s & 11 & 12 & 13 & w & 14\\
+\end{tabular}\end{minipage}\\
+
+which violates the FDs $S \to U$, $V \to QU$, and $S \to TVX$. To make this instance of $R_1$ valid, I make the following corrections (the values to replace are marked with strikethroughs):\\
+
+\begin{minipage}[t]{1in}\begin{tabular}{llllllll}
+Q & R & S & T & U & V & W & X\\
+\hline
+q & 1 & 2 & 3 & u & v & 4 & 5\\
+\sout{6} q & 7 & s & t & \sout{8} u & v & 9 & x\\
+\sout{10} q & r & s & \sout{11} t & \sout{12} u & \sout{13} v & w & \sout{14} x\\
+\end{tabular}\end{minipage}\\
+
+Since $<q,r,s,t,u,v,w,x>$ appears in the last row of this instance, it must appear in $R_1$. Thus, the decomposition has lossless joins.
+\end{enumerate}
+
+\item
+\begin{enumerate}[itemsep=0.3cm]
+\item I first split the RHS of each FD, and the set of resulting FDs is $S_3=\{CDH \to F,G \to D,G \to H,FG \to C,FG \to D,FG \to E,H \to C,H \to E,H \to G,F \to C,F \to D\}$. Next, I try to reduce the LHS of FDs with multiple attributes on the LHS to make them stronger:
+\begin{itemize}
+    \item $CDH \to F$: $C^+ = C$, $D^+ = D$, $H^+ = HCEGDF$, so I can reduce the LHS to $H$.
+    \item $FG \to C$: $F^+ = FCD$, so I can reduce the LHS to $F$.
+    \item $FG \to D$: $F^+ = FCD$, so I can reduce the LHS to $F$.
+    \item $FG \to E$: $F^+ = FCD$, $G^+ = GDHCE$, so I can reduce the LHS to $G$.
+\end{itemize}
+The FDs after reducing their LHS are numbered as follows:
+\begin{itemize}
+    \item 1: $H \to F$
+    \item 2: $G \to D$
+    \item 3: $G \to H$
+    \item 4: $F \to C$
+    \item 5: $F \to D$
+    \item 6: $G \to E$
+    \item 7: $H \to C$
+    \item 8: $H \to E$
+    \item 9: $H \to G$
+\end{itemize}
+I name this set of FDs $S_4$. Next, I find and eliminate redundant FDs:\\
+
+\begin{tabular}{l|l|l|l}
+& Exclude these from $S_4$ & & \\
+FD & when computing closure & Closure & Decision \\
+\hline
+1 & 1 & There's no way to get $F$ without this FD & Keep \\
+2 & 2 & $H^+ = GHEFCD$ & Discard \\
+3 & 2, 3 & There's no way to get $H$ without this FD & Keep \\
+4 & 2, 4 & There's no way to get $C$ without this FD & Keep \\
+5 & 2, 5 & There's no way to get $D$ without this FD & Keep \\
+6 & 2, 6 & $G^+ = GHFCE$ & Discard \\
+7 & 2, 6, 7 & $H^+ = HFEGCD$ & Discard \\
+8 & 2, 6, 7, 8 & There's no way to get $E$ without this FD & Keep \\
+9 & 2, 6, 7, 9 & There's no way to get $G$ without this FD & Keep
+\end{tabular}\\
+
+No further simplifications are possible. The remaining FDs are 1, 3, 4, 5, 8, and 9, and the minimal basis is $S_5 = \{F \to C,F \to D,G \to H,H \to E,H \to F,H \to G\}$.
+\item I first determine which attributes must be in every key and which ones I must check:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+& \multicolumn{2}{|c|}{Appears on} & \\
+\cline{2-3}
+Attribute & LHS & RHS & Conclusion \\
+\hline
+A, B & -- & -- & must be in every key \\
+\hline
+-- & \checked & -- & must be in every key \\
+\hline
+C, D, E & -- & \checked & is not in any key \\
+\hline
+F, G, H & \checked & \checked & must check \\
+\hline
+\end{tabular}
+\end{center}
+
+Then, I check all possible combinations of $F$, $G$, and $H$ added to $A$ and $B$:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|}
+\hline
+F & G & H & Closure & Decision\\
+\hline\hline
+\checked &&& $ABF^+ = ABFCD$ & Not a superkey\\
+\hline
+& \checked && $ABG^+ = ABGHEFCD$ & Superkey\\
+\hline
+&& \checked & $ABH^+ = ABHEFGCD$ & Superkey\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the combinations (which are $ABFG$, $ABFH$, $ABGH$, and $ABFGH$) since they are all supersets of either $ABG$ or $ABH$, which are superkeys. Also, notice that no subset of $ABG$ and $ABH$ are superkeys:
+\begin{itemize}
+    \item $A^+ = A$, so $A$ is not a superkey.
+    \item $B^+ = B$, so $B$ is not a superkey.
+    \item $G^+ = GHEFCD$, so $G$ is not a superkey.
+    \item $H^+ = HEFGCD$, so $H$ is not a superkey.
+    \item $AB^+ = AB$, so $AB$ is not a superkey.
+    \item $AG^+ = AGHEFCD$, so $AG$ is not a superkey.
+    \item $BG^+ = BGHEFCD$, so $BG$ is not a superkey.
+    \item $AH^+ = AHEFGCD$, so $AH$ is not a superkey.
+    \item $BH^+ = BHEFGCD$, so $BH$ is not a superkey.
+\end{itemize}
+Thus, $ABG$ and $ABH$ are minimal superkeys, meaning they are the keys for $R_2$.
+\item I first merge the RHS of the FDs in the minimal basis to form $S_6 = \{F \to CD,G \to H,H \to EFG\}$. Using this, I define the relations $R_3(F,C,D)$, $R_4(G,H)$, and $R_5(H,E,F,G)$. Since the attributes $GH$ are in $R_5$, I don't need to keep $R_4$. Also, no relation is a superkey, so I add the relation $R_6(A,B,G)$, which includes the key $ABG$. The relations in the final decomposition are:
+\begin{align*}
+    R_3(F,C,D) && R_5(H,E,F,G) && R_6(A,B,G).
+\end{align*}
+\item To check for redundancy, I must determine if there is any relation in the final decomposition that does not satisfy BCNF. To see if $R_3$ satisfies BCNF, I project the minimal basis onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|}
+\hline
+F & C & D & Closure & Projected FDs\\
+\hline\hline
+\checked &&& $F^+ = FCD$ & $F \to CD$\\
+\hline
+& \checked && $C^+ = C$ & Nothing\\
+\hline
+&& \checked & $D^+ = D$ & Nothing\\
+\hline
+& \checked & \checked & $CD^+ = CD$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the subsets of $R_3$ (which are $FC$, $FD$, and $FCD$) since they are all supersets of $F$, which is a superkey. Since $R_3$ does not have a projected FD that violates BCNF, it satisfies BCNF. To see if $R_4$ satisfies BCNF, I project the minimal basis onto it as follows:
+
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+H & E & F & G & Closure & Projected FDs\\
+\hline\hline
+\checked &&&& $H^+ = HEFGCD$ & $H \to EFG$\\
+\hline
+& \checked &&& $E^+ = E$ & Nothing\\
+\hline
+&& \checked && $F^+ = FCD$ & Nothing\\
+\hline
+&&& \checked & $G^+ = GHEFCD$ & $G \to H$\\
+\hline
+& \checked & \checked && $EF^+ = EFCD$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+I did not check the rest of the subsets of $R_4$ (which are $HE$, $HF$, $HG$, $EG$, $FG$, $HEF$, $HEG$, $HFG$, $EFG$, and $HEFG$) since they are all supersets of either $H$ or $G$, which are superkeys. Since $R_4$ does not have a projected FD that violates BCNF, it satisfies BCNF. To see if $R_5$ satisfies BCNF, I project the minimal basis onto it as follows:
+
+\begin{center}\begin{tabular}{|l|l|l|l|l|}
+\hline
+A & B & G & Closure & Projected FDs\\
+\hline\hline
+\checked &&& $A^+ = A$ & Nothing\\
+\hline
+& \checked && $B^+ = B$ & Nothing\\
+\hline
+&& \checked & $G^+ = GHEFCD$ & Nothing\\
+\hline
+\checked & \checked && $AB^+ = AB$ & Nothing\\
+\hline
+\checked && \checked & $AG^+ = AGHEFCD$ & Nothing\\
+\hline
+& \checked & \checked & $BG^+ = BGHEFCD$ & Nothing\\
+\hline
+\checked & \checked & \checked & $ABG^+ = ABGHEFCD$ & Nothing\\
+\hline
+\end{tabular}\end{center}
+
+Since $R_5$ does not have any projected FDs, it does not have a projected FD that violates BCNF, meaning it satisfies BCNF. In summary, $R_3$, $R_5$, and $R_6$ all satisfy BCNF. Therefore, none of them allows redundancy.
+
+\end{enumerate}
+
+}\end{enumerate}
+
+\end{document}
