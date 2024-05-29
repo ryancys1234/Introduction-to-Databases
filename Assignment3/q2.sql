@@ -1,6 +1,6 @@
 DROP VIEW IF EXISTS unsorted CASCADE;
 
--- The number of conferences attended that each person attended
+-- The number of conferences that each person attended
 CREATE VIEW unsorted AS
 (SELECT cr.attendee_id AS person_id, COUNT(*) AS num_conferences
 FROM ConferenceRegistration cr
