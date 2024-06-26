@@ -1,0 +1,390 @@
+ \documentclass{exam}
+
+\input{ps-style.tex}
+
+%%% Uncomment if you are writing a draft
+%\toggledraft
+
+%%% Uncomment if you want to show your multiple choice answers
+\printanswers
+
+%%% Local document information
+\declarecommand{\docname}{Problem Set 6}		\usepackage{neuralnetwork}
+\declarecommand{\dueday}{Friday}
+\declarecommand{\duedate}{February 10, 2023}
+\declarecommand{\duetime}{13:00 ET}
+\declarecommand{\tutorialdate}{Tuesday February 7, 2023}
+\declarecommand{\docinfo}{\href{\urlFAQ/modules}{Module G: Integrals} (G7) and \href{\urlFAQ/modules}{Module H: Integral applications} (H1 to H3) and \href{\urlFAQ/modules}{Module I: Integration methods} (I1 and I2)}
+
+%%% Uncomment both if you are a MAT237 teaching member writing the official  solutions
+%\declarecommand{\makeinstructions}{\vfill\pagebreak}
+%\declarecommand{\docname}{Problem Set 5 solutions}
+%\declarecommand{\authors}{C. Davies, A. Qiu, and A. Zaman}
+
+%%% Student information
+\declarecommand{\FirstStudentName}{} 
+\declarecommand{\FirstStudentNumber}{}
+
+\declarecommand{\SecondStudentName}{} % leave empty if you are submitting individually
+\declarecommand{\SecondStudentNumber}{} % leave empty if you are submitting individually
+
+%%% Custom math commands
+%% Standard
+\declarecommand{\ds}{\displaystyle} % force math styling
+\declarecommand{\emptyset}{\varnothing} % better empty set
+\declarecommand{\epsilon}{\varepsilon} % better epsilon
+\declarecommand{\R}{\mathbb{R}} % reals
+\declarecommand{\Z}{\mathbb{Z}} % integers
+\declarecommand{\Q}{\mathbb{Q}} % rationals
+\declarecommand{\N}{\mathbb{N}} % naturals
+\declarecommand{\C}{\mathbb{C}} % complex
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolue value
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % norm
+
+%% Linear algebra
+\declarecommand{\mat}[1]{\begin{bmatrix*}[r]#1\end{bmatrix*}}
+\declarecommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}} % matrix
+\DeclareMathOperator{\Span}{span} % span
+\DeclareMathOperator{\Img}{img} % image
+\DeclareMathOperator{\Ker}{ker} % kernel
+\DeclareMathOperator{\Id}{id} % identity map
+\DeclareMathOperator{\Range}{range} % range
+\DeclareMathOperator{\Rref}{rref} % row reduced echelon form
+\DeclareMathOperator{\Rank}{rank} % rank
+\DeclareMathOperator{\Null}{null} % null space
+\DeclareMathOperator{\Nullity}{nullity} % nullity
+\DeclareMathOperator{\Proj}{proj} % projection
+\DeclareMathOperator{\Dim}{dim} % dimension
+
+%% Topology
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Cl}{cl}
+
+%% Calculus
+\DeclareMathOperator{\Length}{length} % length
+\DeclareMathOperator{\Area}{area} % area
+\DeclareMathOperator{\Vol}{vol} % volume
+\DeclareMathOperator{\Grad}{grad} % gradient
+\DeclareMathOperator{\Curl}{curl} % curl
+\DeclareMathOperator{\Div}{div} % divergence
+
+\begin{document}
+
+
+
+\maketitle
+
+\vspace*{-15pt}
+\makeinstructions
+ 
+%%% PROBLEMS
+\section*{Problems} 
+
+\CorrectChoiceCircle % for multiple choice questions
+
+%%% Do not change the height of this box; your work must fit inside
+%\begin{answer}{450pt}
+%% Insert your answer here
+%\end{answer}
+
+\begin{questions}
+
+
+%%% QUESTION 1
+\question  No justification is necessary for any part of this question. 
+
+\begin{parts}
+
+\item Find a bounded set $S \subseteq \R^n$ such that $f$ is integrable on $S$ for all bounded functions $f : \R^n \to \R$. 
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{80pt}
+% Insert your answer here
+Let $S = \{0\} \subseteq \R^n$.
+\end{answer}
+	
+\item Find a bounded function $f : \R^n \to \R$ such that $f$ is integrable on $S$ for all bounded sets $S \subseteq \R^n$.  
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{80pt}
+% Insert your answer here
+Let $f(x) = 0, \forall x \in \R^n$.
+\end{answer}
+
+
+\item Find a bounded set $S \subseteq \R^n$ and a bounded function $f : \R^n \to \R$ such that 
+\begin{itemize}
+	\item $f$ is not integrable on $S$.
+	\item $f$ is integrable on $\partial S$, is integrable on $\overline{S}$, and is integrable on $S^o$. 
+\end{itemize}
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{120pt}
+% Insert your answer here
+Let $S = (\Q \cap [0,1])^n$. Let $f(x) = 1$, $\forall x \in \R^n$.
+\end{answer}
+
+
+\item Find a bounded set $S \subseteq \R^n$ and a bounded function $f : \R^n \to \R$ such that 
+\begin{itemize}
+	\item $f$ is integrable on $S$, and is integrable on $S^o$.
+	\item $f$ is not integrable on $\partial S$, and is not integrable on $\overline{S}$. 
+\end{itemize}
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{120pt}
+% Insert your answer here
+Let $S = \Q^n \cap [0,1]^n$. Let $f(x) = 0$ for $x \in \Q^n$, and $f(x) = 1$ for $x \in \R^n \setminus \Q^n$.
+\end{answer}
+
+\end{parts}
+
+
+
+\pagebreak
+%%% QUESTION 2
+\question For each part, decide which statement is true by filling EXACTLY ONE circle. No justification is necessary. 
+
+
+Let $S \subseteq \R^n$ be a Jordan measurable set. Let $f : \R^n \to \R$ be bounded. Assume $f$ is integrable on $S$. 
+
+
+
+\CorrectChoiceCircle
+\begin{parts}
+	
+	\item Is $f$ integrable on the boundary $\partial S$?	\\[-3pt]
+	
+	% Replace \choice with \CorrectChoice to select an option
+	\begin{checkboxes}
+		\choice We cannot determine whether $f$ is integrable on $\partial S$ without more information. \\[-3pt]
+		\choice $f$ is not integrable on $\partial S$.\\[-3pt]
+		\choice $f$ is integrable on $\partial S$ but we cannot determine the value of $\ds\int_{\partial S} f dV$ without more information. 	
+		\CorrectChoice $f$ is integrable on $\partial S$ and $\ds\int_{\partial S} f dV =0$.
+		\choice $f$ is integrable on $\partial S$ and $\ds\int_{\partial S} f dV = \ds\int_S fdV$.
+	\end{checkboxes}
+	\medskip
+
+	% Replace \choice with \CorrectChoice to select an option
+	\item Is $f$ integrable on the interior $S^o$?	\\[-3pt]
+	\begin{checkboxes}
+		\choice We cannot determine whether $f$ is integrable on $S^o$ without more information. \\[-3pt]
+		\choice $f$ is not integrable on $S^o$.\\[-3pt]
+		\choice $f$ is integrable on $S^o$ but we cannot determine the value of $\ds\int_{S^o} f dV$ without more information. 	
+		\choice $f$ is integrable on $S^o$ and $\ds\int_{S^o} f dV =0$.
+		\CorrectChoice $f$ is integrable on $S^o$ and $\ds\int_{S^o} f dV = \ds\int_S fdV$.
+	\end{checkboxes}
+	\medskip
+
+	% Replace \choice with \CorrectChoice to select an option
+	\item Is $f$ integrable on the closure $\overline{S}$?\\[-3pt]
+	\begin{checkboxes}
+		\choice We cannot determine whether $f$ is integrable on $\overline{S}$ without more information.  \\[-3pt]
+		\choice $f$ is not integrable on $\overline{S}$.\\[-3pt]
+		\choice $f$ is integrable on $\overline{S}$ but we cannot determine the value of $\ds\int_{\overline{S}} f dV$ without more information. 	
+		\choice $f$ is integrable on $\overline{S}$ and $\ds\int_{\overline{S}} f dV =0$.
+		\CorrectChoice $f$ is integrable on $\overline{S}$ and $\ds\int_{\overline{S}} f dV = \ds\int_S fdV$.
+	\end{checkboxes}
+	\medskip
+
+	% Replace \choice with \CorrectChoice to select an option	
+	\item Is $f$ integrable on the complement $S^c$?\\[-3pt]
+	\begin{checkboxes}
+		\CorrectChoice We cannot determine whether $f$ is integrable on $S^c$ without more information.  \\[-3pt]
+		\choice $f$ is not integrable on $S^c$.\\[-3pt]
+		\choice $f$ is integrable on $S^c$ but we cannot determine the value of $\ds\int_{S^c} f dV$ without more information. 	
+		\choice $f$ is integrable on $S^c$ and $\ds\int_{S^c} f dV = 0$.
+		\choice $f$ is integrable on $S^c$ and $\ds\int_{S^c} f dV = - \ds\int_S fdV$.
+	\end{checkboxes}
+	
+\end{parts}
+
+ 
+
+\pagebreak
+%%% QUESTION 3
+\question \label{CentreMass} 
+For a system of point masses at positions $x_1,\dots,x_N \in \R^n$ with masses $m_1,\dots,m_N > 0$ respectively, the centre of mass of this system is given by 
+\begin{equation}
+\frac{\sum_{i=1}^N m_i x_i }{\sum_{i=1}^N m_i} \in \R^n. 
+	\tag{$\star$}
+	\label{Principle}
+\end{equation}
+You may take this physical principle for granted. 
+
+
+Let $\delta :R \to [0,\infty)$ be the density of a rectangular object $R \subseteq \R^n$ with positive mass. Assume $\delta$ is continuous on $R$ aside from a set of zero Jordan measure. SpongeBob attempts to derive an integral formula for the centre of mass, but skips some crucial explanation and makes a mathematical error. 
+
+\begin{lines}
+	\item Let $P$ be a partition of $R$ with subrectangles $\{R_i\}_{i \in I}$.
+	\item For each $i \in I$, let $x_i^* \in R_i$ be a sample point. 
+	\item By \eqref{Principle}, the centre of mass of $R$ is approximately equal to $\dfrac{\sum_{i \in I} x_i^* \delta(x_i^*) \Vol(R_i)  }{ \sum_{i\in I} \delta(x_i^*) \Vol(R_i)} \in \R^n$. 
+	\item Taking $|I| \to \infty$, the centre of mass is therefore equal to $\dfrac{\int_R x \delta(x) dV }{\int_R  \delta dV} \in \R^n$.
+\end{lines}
+\begin{parts}
+	\item  Line 3 applies \eqref{Principle} without enough detail. What objects are treated as point masses? How are masses approximated? Under what mathematical or physical assumptions can these two heuristics be considered reasonable? Explain in 50 to 100 words. Use full sentences, be concise, and use symbols sparingly.
+	
+	%% Do not change the height of this box; your work must fit inside
+\begin{answer}{260pt}
+% Insert your answer here
+The subrectangles are treated as point masses. For each subrectangle, its mass is approximated by a sample point lying inside it. These are reasonable with the following assumptions: if we assume the subrectangles are arbitrarily small, then their volumes are roughly uniform and approaching that of a point, which is zero. If we assume the density is continuous, then at arbitrarily small regions, it is roughly constant, so the density at a sample point is roughly equal to the density at any point in a given subrectangle.
+\end{answer}
+	
+	\item Line 4 takes an incorrect limit. What limit should be taken instead? Also, state which theorem could be used to justify that this corrected limit is equal to the corresponding expression. Do not justify it. 
+
+	%% Do not change the height of this box; your work must fit inside
+\begin{answer}{60pt}
+% Insert your answer here
+For line 1, construct a sequence of partitions $P_1, P_2, P_3, ...$ of R such that $|| P_N || \to 0$ as $N \to \infty$. Thus, in line 4, take the limit $N \to \infty$. The theorem is 7.3.18.
+\end{answer}
+
+
+\end{parts}
+
+
+
+
+\pagebreak
+%%% QUESTION 4
+\question  Define $\Omega = [-2023,2023]^4$. Let $(\Omega,\Sigma,\mathbb{P})$ be a continuous probability space in $\R^4$ with probability density function $\phi$. 
+Choose $(A,B,C,D) \in \Omega$ randomly according to your continuous probability space. You will prove that the $2 \times 2$ matrix
+\[
+M = \matc{ A & B \\ C & D} 
+\]
+is invertible with probability one. 
+\begin{parts}
+
+\item Define the set
+\[
+S = \{ (a,b,c,d) \in \Omega : ad - bc = 0\}.
+\]
+Assuming $S$ is an event in $\Sigma$ and $\mathbb{P}(S) = 0$, explain why $M$ will be invertible with probability one. 
+
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{330pt}
+% Insert your answer here
+Assume $\mathbb{P}(\Omega) = 1$. $\Omega$ is Jordan measurable since it is a rectangle. Since $S \in \Sigma$, $\Omega \setminus S \in \Sigma$ by Theorem 8.4.3b. Since $S$ and $\Omega \setminus S$ are disjoint, $\mathbb{P}(\Omega) = \mathbb{P}(S \cup \Omega \setminus S) = \mathbb{P}(S) + \mathbb{P}(\Omega \setminus S)$ by Theorem 8.4.7c. $\mathbb{P}(\Omega) = 1$ and $\mathbb{P}(S) = 0$ by assumption, so $\mathbb{P}(\Omega \setminus S) = 1$.\
+
+\
+
+$\Omega \setminus S$ is the event that $S$ does not happen, i.e., that $M$ is invertible. Thus, $M$ is invertible with probability 1.
+\end{answer}
+
+\item Prove that if $S$ has zero Jordan measure, then $S \in \Sigma$ and $\mathbb{P}(S) = 0$. 
+
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{150pt}
+By Lemma 7.6.8a, since $S$ has zero Jordan measure, it is Jordan measurable. Together with the fact that $S \subseteq \Omega$, by definition of $\Sigma$, this means $S \in \Sigma$.\newline\
+
+$S \subseteq \Omega$ is bounded, and $\phi$ is bounded by construction. Since $S$ has zero Jordan measure, by Theorem 7.7.8a and the definition of the probability function $\mathbb{P}$, $\mathbb{P}(S) = \int_S \phi dV = 0$.
+\end{answer}
+
+
+\item Fill the remaining gap in the proof by showing $S$ has zero Jordan measure. \textit{Hint:} Proceed by definition. Cover the origin in $\R^4$ with a small rectangle depending on $\epsilon$ and then use Sard's theorem to cover the other pieces which depend on $\epsilon$.
+
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{590pt}
+% Insert your answer here
+Let $\epsilon > 0$. WLOG, assume $\epsilon < 1$. Take $r = \sqrt[4]{\epsilon/32}$. Let $(a,b,c,d) \in S$.\newline\
+
+Either $(a,b,c,d) \in (-r,r)^4$ or $(a,b,c,d) \notin (-r,r)^4$. For the former case, notice $(-r,r)^4 \subseteq [-r,r]^4$ and vol$([-r,r]^4) = (\sqrt[4]{\epsilon/2})^4 = \epsilon/2$.\newline\
+
+Consider the following functions:\
+
+Define $f_1: \R \setminus \{0\} \times \R \times \R \to \R^4$ by $f(x,y,z) = (x,y,z,yz/x)$ for $y, z \in \R, x \in \R \setminus \{0\}$.\
+
+Define $f_2: \R \times \R \setminus \{0\} \times \R \to \R^4$ by $f(x,y,w) = (x,y,xw/y,w)$ for $x, w \in \R, y \in  \R \setminus \{0\}$.\
+
+Define $f_3: \R \times \R \setminus \{0\} \times \R \to \R^4$ by $f(x,z,w) = (x,xw/z,z,w)$ for $x, w \in \R, z \in  \R \setminus \{0\}$.\
+
+Define $f_4: \R \times \R \times \R \setminus \{0\} \to \R^4$ by $f(y,z,w) = (yz/w,y,z,w)$ for $y, z \in \R, w \in  \R \setminus \{0\}$.\
+
+Note the above functions are all $C^1$ on their respective domains.\newline\
+
+For $(a,b,c,d) \notin (-r,r)^4$, consider the following subcases:\newline\
+
+Subcase $a \leq -r$: $(a,b,c,d) \in f_1([-2023,-r]\times[-2023,2023]^2)$.\
+
+Subcase $a \geq r$: $(a,b,c,d) \in f_1([r,2023]\times[-2023,2023]^2)$.\
+
+Subcase $b \leq -r$: $(a,b,c,d) \in f_2([-2023,2023]\times[-2023,-r]\times[-2023,2023])$.\
+
+Subcase $b \geq r$: $(a,b,c,d) \in f_2([-2023,2023]\times[r,2023]\times[-2023,2023])$.\newline\
+
+The subcases $c \leq -r$, $c \geq r$, $d \leq -r$, $d \geq r$ are similar, using the images of $f_3, f_3, f_4$, and $f_4$ respectively.\newline\
+
+By Sard's theorem (Theorem 7.5.12), since $f_1, f_2, f_3$, and $f_4$ are $C^1$ on their open domains, their images as specified in the subcases have zero Jordan measure in $R^4$.\newline\
+
+Notice that $S$ is contained in the union of $(-r,r)^2$ and the eight images of $f_1, f_2, f_3$, and $f_4$ as specified in the subcases. Since vol$((-r,r)^4) \leq \epsilon/2$ and the images have zero volume, this union has volume $< \epsilon$. By definition 7.5.1, $S$ has zero Jordan measure.
+
+\end{answer}
+
+\end{parts}
+
+
+\pagebreak
+
+%%% QUESTION 5
+\question \label{Fubini} Let $S = \{ (x,y) \in \R^2 : -2 \leq x \leq 2, 0 \leq y \leq \sqrt{4-x^2} \}$ and define $f : S \to \R$ by $f(x,y) = 3+\sqrt{4-x^2-y^2}$.
+\begin{parts}
+
+\item Prove that $f$ is integrable on $S$.
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{580pt}
+% Insert your answer here
+$S \in B_3(0)$ so it is bounded. Define $\phi : \R \to \R^2$ by $\phi(x) = (2 \cos x, 2 \sin x)$ for $x \in \R$. Define $h: \R \to \R^2$ by $h(t) = (t, 0)$ for $t \in R$. Notice $\partial S = \{ (x,y) \in \R^2 : x^2 + y^2 = 2, y \geq 0 \} = \phi([ 0, \pi ]) \cup h([-2, 2])$. Since $\phi$ and $h$ are $C^1$, by Sard's theorem, $\partial S$ has zero Jordan measure. Hence, by definition 7.6.3, $S$ is Jordan measurable.\newline\
+
+Note $f$ is bounded on $S$ since $\forall x \in S, 3 \leq f(x) \leq 5$. The set of discontinuities of $f$ in $S$ is empty and hence has zero Jordan measure. By theorem 7.7.4, $f$ is integrable on $S$.
+\end{answer}
+	
+\item Formally verify the assumptions of Fubini's theorem to prove that 
+\[
+\iint_S f dA = \int_{-2}^2 \int_0^{\sqrt{4-x^2}} 3+\sqrt{4-x^2-y^2} \, dy \, dx.  
+\]	
+Do not calculate any integrals. 
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{570pt}
+% Insert your answer here
+
+By part a, $f$ is integrable on $S$ and $\iint_{S} f dA$ exists. Define $Q = [-2, 2] \times [0, 2] \supseteq S$. Define $g: \R^2 \to \R$ by $g(x, y) = \chi_S(x, y) f(x, y)$ for $(x, y) \in \R^2$. Since $\iint_{S} f dA = \iint_{Q} g dA$ by definition 7.7.1, $g$ is integrable on $Q$. \newline\
+
+Let $x \in [-2, 2]$. Define $g^x : [0, 2] \to \R$ by $g^x (y) = g(x, y)$ for $y \in [0, 2]$.\newline\
+
+Note $g^x(y) = \chi_S(x, y) f(x, y) = \chi_{[0, \sqrt{4-x^2}]}(y) f(x, y)$ by definition of $S$. Thus, for all $x \in [-2, 2]$, the set of discontinuities of $g^x$ on $[0, 2]$ is $\{(x, \sqrt{4 - x^2}) \in Q : x \in [-2, 2]\} = \phi([0, \pi])$, for $\phi$ as defined in part a. By Sard's theorem (Theorem 7.5.12), since $\phi$ is $C^1$ on $\R$, this set has zero volume. By Theorem 7.7.17, $g^x$ is integrable on $[0, 2]$, $\forall x \in [-2, 2]$.\newline\
+
+By Fubini's theorem (Theorem 9.7.17), the iterated integral $dydx$ exists and $\iint_S f dA = \iint_{Q} g dA = \int_{-2}^2 \int_{0}^2 g(x,y) dydx = \int_{-2}^2 \int_0^{2} \chi_{[0, \sqrt{4-x^2}]}(y) f(x,y) dydx = \int_{-2}^2 \int_0^{\sqrt{4-x^2}} f(x,y) dydx$.
+
+\end{answer}
+
+\end{parts}
+
+ 
+\pagebreak
+
+%%% QUESTION 6
+\question Consider again the integral
+\[
+I = \int_{-2}^2 \int_0^{\sqrt{4-x^2}} 3+\sqrt{4-x^2-y^2} \, dy \, dx
+\]
+from Question \ref{Fubini}. You could evaluate $I$ by direct calculation, but instead you will try two different ways. 
+\begin{parts}
+
+\item Interpret $I$ as a volume of a solid $T \subseteq \R^3$. Define the solid $T$ using set builder notation, and include sketches in $\R^3$ to support your argument. Compute the volume using geometry of known solids in $\R^3$. Do not evaluate any integrals. 
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{530pt}
+% Insert your answer here
+\end{answer}
+\pagebreak
+\item Sketch the region of integration using the $dx \, dy$ order along with a typical slice. Label your figure. 
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{90pt}
+% Insert your answer here
+\end{answer}
+
+\item  Assuming Fubini's theorem applies without justification, evaluate $I$ using the $dx \, dy$ order of integration. Show your steps when calculating single variable integrals. Do not use polar coordinates. 
+%% Do not change the height of this box; your work must fit inside
+\begin{answer}{480pt}
+% Insert your answer here
+\end{answer}
+
+\end{parts}
+
+\end{questions}
+
+\end{document}
